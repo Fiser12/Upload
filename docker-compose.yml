@@ -1,0 +1,10 @@
+upload-db:
+  build: ./db-server
+  ports:
+    - "27017:27017"
+upload-ms:
+  build: .
+  ports:
+    - "5000:5000"
+  links:
+    - upload-db
