@@ -1,5 +1,6 @@
 FROM python:2.7
-ADD ./src /code
+ADD ./ /code
 WORKDIR /code
 RUN pip install -r requirements.txt
-CMD ["python", "run.py"]
+EXPOSE 4015
+CMD ["python","upload_app.py"]
