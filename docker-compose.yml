@@ -4,6 +4,9 @@ upload-db:
     - "3010:5984"
 upload-ms:
   build: ./upload_ms
+  environment:
+      PORT: '5984'
+      ROOT_URL: 'upload-db'
   ports:
     - "4015:4015"
   links:
