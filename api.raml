@@ -1,8 +1,12 @@
 #%RAML 1.0
 title: Upload file API
 baseUri: http://localhost:4015
-mediaType: application/json
+mediaType: multipart/form-data
 
 /upload/{id}:
     post:
         description: Creates a file
+    body:
+        properties:
+            file: file
+            expiring_date: string

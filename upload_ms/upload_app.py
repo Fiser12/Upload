@@ -1,6 +1,15 @@
 from flask import Flask
 from resource.Upload_Resource import Upload_Resource
 from flask_restful import Api
+import os
+try:
+    HOST_URL = os.environ['HOST_URL']
+except:
+    HOST_URL = "127.0.0.1"
+try:
+    HOST_PORT = int(os.environ['HOST_PORT'])
+except:
+    HOST_PORT = 4015
 
 app = Flask(__name__);
 api = Api(app)
@@ -9,4 +18,4 @@ api.add_resource(Upload_Resource, "/upload/<string:id>")
 
 if __name__ == "__main__":
     app.debug = True
-    app.run(host="0.0.0.0", port=4015)
+    app.run(host=HOST_URL, port=HOST_PORT)
