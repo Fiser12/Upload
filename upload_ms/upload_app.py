@@ -2,9 +2,7 @@ import os
 
 from flask import Flask
 from flask_restful import Api
-
 from resource.Upload_Resource import Upload_Resource
-
 
 try:
     HOST_URL = os.environ['HOST_URL']
@@ -22,4 +20,5 @@ api.add_resource(Upload_Resource, "/upload/<string:id>")
 
 if __name__ == "__main__":
     app.debug = True
+    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
     app.run(host=HOST_URL, port=HOST_PORT)
