@@ -9,6 +9,7 @@ parser = reqparse.RequestParser()
 parser.add_argument("file", type=FileStorage, location="files", required=True, help="File is needed")
 parser.add_argument("expiring_date", type=float, location="form", required=True,
                     help="Expiring date is needed and have to be decimal")
+parser.add_argument("shared", type=str, location="form")
 
 
 class Upload_Resource(Resource):
@@ -17,7 +18,8 @@ class Upload_Resource(Resource):
     def post(self, id):
         # Request for the required values, if such values doesn't exist, it generates an error depending on the missing value
         args = parser.parse_args()
-        service = Upload_Service(id_user=id, file=args["file"], expiring_date=args["expiring_date"])
+        service = Upload_Service(id_user=id, file=args["file"], expiring_date=args["expiring_date"],
+                                 shared=args["shared"])
         response = service.createFile()
         json_response = dumps(response["Message"], separators=(",", ":"), indent=4, sort_keys=True)
         return Response(response=json_response, status=response["Code"], content_type="application/json")

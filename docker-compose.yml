@@ -5,8 +5,11 @@ upload-db:
 upload-ms:
   build: ./upload_ms
   environment:
-      PORT: '5984'
-      ROOT_URL: 'upload-db'
+      DB_PORT: '5984'
+      DB_URL: 'upload-db'
+      DB_NAME: 'blinkbox_files'
+      HOST_URL: '0.0.0.0'
+      HOST_PORT: '4015'
   ports:
     - "4015:4015"
   links:

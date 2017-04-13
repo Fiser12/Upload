@@ -4,8 +4,9 @@ from datetime import datetime, timedelta
 
 
 def expiring():
-    newDate = datetime.now()+timedelta(days=7)
+    newDate = datetime.now() + timedelta(days=7)
     return mktime(newDate.timetuple())
+
 
 class File(Document):
     # Fields of the documment File
@@ -18,3 +19,4 @@ class File(Document):
     expiring_date = DecimalField(default=expiring)
     owner_id = TextField()
     shared = ListField(TextField())
+    md5 = TextField()
