@@ -6,7 +6,16 @@ mediaType: multipart/form-data
 /upload/{id}:
     post:
         description: Creates a file
-        body:
-            properties:
-                file: file
-                expiring_date: string
+    body:
+        properties:
+            file:
+                description: The file to be upload
+                required: true
+                type: file
+            expiring_date:
+                description: Expiring date
+                required: true
+                type: string
+            shared:
+                description: Shared email list
+                type: string[]

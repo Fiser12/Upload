@@ -1,7 +1,11 @@
-from flask import Flask
-from resource.Upload_Resource import Upload_Resource
-from flask_restful import Api
 import os
+
+from flask import Flask
+from flask_restful import Api
+
+from resource.Upload_Resource import Upload_Resource
+
+
 try:
     HOST_URL = os.environ['HOST_URL']
 except:
