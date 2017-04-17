@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from flask_restful import Api
 from resource.Upload_Resource import Upload_Resource
+from flask_cors import CORS
 
 try:
     HOST_URL = os.environ['HOST_URL']
@@ -15,6 +16,7 @@ except:
 
 app = Flask(__name__);
 api = Api(app)
+CORS(app)
 # Define route for upload
 api.add_resource(Upload_Resource, "/upload/<string:id>")
 
