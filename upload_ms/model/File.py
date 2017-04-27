@@ -1,4 +1,4 @@
-from couchdb.mapping import Document, TextField, DecimalField, ListField, IntegerField
+from couchdb.mapping import Document, TextField, FloatField, ListField, IntegerField
 from time import time, mktime
 from datetime import datetime, timedelta
 
@@ -14,9 +14,9 @@ class File(Document):
     extension = TextField()
     size = IntegerField()
     # If the upload_date isn't given, upload_date will be the today date in seconds since the Epoch
-    uploaded_date = DecimalField(default=time)
+    uploaded_date = FloatField(default=time)
     # If the expiring_date isn't given, expiring_date will be today date in a week in seconds since the Epoch
-    expiring_date = DecimalField(default=expiring)
+    expiring_date = FloatField(default=expiring)
     owner_id = TextField()
     shared = ListField(TextField())
     md5 = TextField()

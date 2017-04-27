@@ -1,7 +1,6 @@
 import httplib
 import os
 from couchdb import Server
-from couchdb import client
 from model.File import File
 
 try:
